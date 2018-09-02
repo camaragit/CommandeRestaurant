@@ -1,0 +1,8 @@
+{
+  "name": "CommandeRestaurant",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "151d0468"
+}
