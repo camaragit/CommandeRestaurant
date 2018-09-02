@@ -24,7 +24,7 @@ phoneinvalid : boolean = false;
     prenom: ['', Validators.required],
     adresse: ['', Validators.required],
     montant: ['', Validators.required],
-    telephone: ['', Validators.required],
+  //  telephone: ['', Validators.required],
     details:['',Validators.required]
 
   });
@@ -46,15 +46,16 @@ phoneinvalid : boolean = false;
 
   // register and go to home page
   register() {
-
+  this.api.afficheloading();
       //  let datenaiss = this.formaterdate(this.datauser.controls['datenaissance'].value);
           //http://services.ajit.sn/ws/client/commande?prenom=prenom&nom=nom&adresse=adresse&montant=montant&detail=detail
-        let url = this.URL.URL+"commande?prenom="+encodeURI(this.datauser.controls['prenom'].value)+"&nom="+this.datauser.controls['prenom'].value;
+        let url = this.URL.URL+"commande?prenom="+encodeURI(this.datauser.controls['prenom'].value)+"&nom="+this.datauser.controls['nom'].value;
         url += "&adresse="+encodeURI(this.datauser.controls['adresse'].value)+"&montant="+encodeURI(this.datauser.controls['montant'].value);
-        url += "&nom="+encodeURI(this.datauser.controls['nom'].value)+"&telephone="+encodeURI(this.datauser.controls['telephone'].value);
+     //   url += "&nom="+encodeURI(this.datauser.controls['nom'].value)+"&telephone="+encodeURI(this.datauser.controls['telephone'].value);
         url += "&detail="+encodeURI(this.datauser.controls['detail'].value);
-
+        console.log("url===>"+url);
         this.api.getdata(url).then(data=>{
+          this.api.dismissloadin();
          //alert(JSON.stringify(data))
           this.api.dismissloadin();
           let val = JSON.parse(data.data);
