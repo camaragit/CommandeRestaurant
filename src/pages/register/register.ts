@@ -11,14 +11,9 @@ import {GlobalVariableProvider} from "../../providers/gloabal-variable/gloabal-v
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-  minDate :any;
 datauser : FormGroup;
-departementsRegion :any;
-communesdepartement :any;
-photo :string;
 phoneinvalid : boolean = false;
-filepath : string;
-filename : string;
+
 
 
 
