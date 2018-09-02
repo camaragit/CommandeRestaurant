@@ -11,6 +11,7 @@ import {ApiProvider} from "../providers/api/api";
 import {GlobalVariableProvider} from "../providers/gloabal-variable/gloabal-variable";
 import {RegisterPage} from "../pages/register/register";
 import {HTTP} from "@ionic-native/http";
+import {Toast} from "@ionic-native/toast";
 Pro.init('151d0468', {
   appVersion: '001'
 })
@@ -53,7 +54,7 @@ export class MyErrorHandler implements ErrorHandler {
     SplashScreen,
     ApiProvider,
     GlobalVariableProvider,
-    HTTP,
+    HTTP,Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
