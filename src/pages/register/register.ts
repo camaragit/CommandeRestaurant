@@ -54,7 +54,7 @@ phoneinvalid : boolean = false;
      //   url += "&nom="+encodeURI(this.datauser.controls['nom'].value)+"&telephone="+encodeURI(this.datauser.controls['telephone'].value);
         url += "&detail="+encodeURI(this.datauser.controls['details'].value);
         console.log("url===>"+url);
-        this.api.getdata(url).then(data=>{
+        this.api.getpost(url).then(data=>{
           this.api.dismissloadin();
          alert(JSON.stringify(data))
           this.api.dismissloadin();
