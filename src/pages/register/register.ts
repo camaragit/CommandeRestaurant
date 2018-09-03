@@ -56,7 +56,7 @@ phoneinvalid : boolean = false;
         console.log("url===>"+url);
         this.api.getdata(url).then(data=>{
           this.api.dismissloadin();
-         //alert(JSON.stringify(data))
+         alert(JSON.stringify(data))
           this.api.dismissloadin();
           let val = JSON.parse(data.data);
           if(val.code=="0")
