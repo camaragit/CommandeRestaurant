@@ -29,12 +29,10 @@ phoneinvalid : boolean = false;
 
   });
   this.Info();
-  this.getVersionInfo();
+  this.getConf();
 
   }
-  getVersionInfo(){
-     console.log("Bonjour Dame")
-  }
+
   async Info(){
      try {
        const versionInfo = await Pro.deploy.getCurrentVersion();
@@ -44,6 +42,17 @@ phoneinvalid : boolean = false;
        console.log("erreur "+JSON.stringify(err));
 
      }
+
+  }
+  async getConf(){
+    try {
+      const versionInfo = await Pro.deploy.getConfiguration();
+      console.log("Information version"+JSON.stringify(versionInfo));
+    }
+    catch (err){
+      console.log("erreur "+JSON.stringify(err));
+
+    }
 
   }
 
