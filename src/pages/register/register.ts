@@ -32,7 +32,26 @@ phoneinvalid : boolean = false;
   this.getConf();
 
   }
+  async performAutomaticUpdate() {
+    try {
+      const currentVersion = await Pro.deploy.getCurrentVersion();
+      const resp = await Pro.deploy.sync({updateMethod: 'auto'});
+      if (currentVersion.versionId !== resp.versionId){
+        console.log("Une nouvelle version est disponible")
+        // We found an update, and are in process of redirecting you since you put auto!
+      }else{
+        // No update available
+        console.log("Pas de nouvelle version")
 
+      }
+    } catch (err) {
+      // We encountered an error.
+      // Here's how we would log it to Ionic Pro Monitoring while also catching:
+
+      // Pro.monitoring.exception(err)
+      console.log("Erreur "+JSON.stringify(err))
+    }
+  }
   async Info(){
      try {
        const versionInfo = await Pro.deploy.getCurrentVersion();
