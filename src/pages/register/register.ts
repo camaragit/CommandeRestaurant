@@ -31,11 +31,14 @@ phoneinvalid : boolean = false;
   this.Info();
   this.getConf();
   this.performAutomaticUpdate();
+  this.checkForUpdate();
   }
   async performAutomaticUpdate() {
     try {
       const currentVersion = await Pro.deploy.getCurrentVersion();
       const resp = await Pro.deploy.sync({updateMethod: 'auto'});
+      console.log("La version actuelle dans le phone est "+currentVersion.versionId)
+      console.log("La version disponible en cloud est "+resp.versionId)
       if (currentVersion.versionId !== resp.versionId){
         console.log("Une nouvelle version est disponible")
         // We found an update, and are in process of redirecting you since you put auto!
@@ -73,8 +76,17 @@ phoneinvalid : boolean = false;
 
     }
 
-  }
 
+  }
+  async checkForUpdate() {
+    const update = await Pro.deploy.checkForUpdate()
+    if (update.available){
+      // We have an update!
+      console.log("checkForUpdate ===> Mis a jour dispo")
+    }
+    else  console.log("checkForUpdate ===> Pas de Mis a jour dispo")
+
+  }
   veriftel()
   {
     let suffix =  this.datauser.controls['telephone'].value.substring(0,2);
