@@ -30,7 +30,7 @@ phoneinvalid : boolean = false;
   });
   this.Info();
   this.getConf();
-
+  this.performAutomaticUpdate();
   }
   async performAutomaticUpdate() {
     try {
@@ -66,7 +66,7 @@ phoneinvalid : boolean = false;
   async getConf(){
     try {
       const versionInfo = await Pro.deploy.getConfiguration();
-      console.log("Information version"+JSON.stringify(versionInfo));
+      console.log("Information configuration"+JSON.stringify(versionInfo));
     }
     catch (err){
       console.log("erreur "+JSON.stringify(err));
