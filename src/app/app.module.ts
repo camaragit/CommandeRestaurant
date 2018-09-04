@@ -12,9 +12,11 @@ import {GlobalVariableProvider} from "../providers/gloabal-variable/gloabal-vari
 import {RegisterPage} from "../pages/register/register";
 import {HTTP} from "@ionic-native/http";
 import {Toast} from "@ionic-native/toast";
+
 Pro.init('151d0468', {
   appVersion: '001'
 })
+
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
@@ -55,7 +57,9 @@ export class MyErrorHandler implements ErrorHandler {
     ApiProvider,
     GlobalVariableProvider,
     HTTP,Toast,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    IonicErrorHandler,
+    [{ provide: ErrorHandler, useClass: MyErrorHandler }]
   ]
 })
 export class AppModule {}

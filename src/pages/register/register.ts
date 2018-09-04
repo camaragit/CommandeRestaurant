@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {WheelSelector} from "@ionic-native/wheel-selector";
 import {ApiProvider} from "../../providers/api/api";
 import {GlobalVariableProvider} from "../../providers/gloabal-variable/gloabal-variable";
-
+import {Pro} from "@ionic/pro";
 
 @Component({
   selector: 'page-register',
@@ -17,7 +17,7 @@ phoneinvalid : boolean = false;
 
 
 
-  constructor(public nav: NavController,private URL:GlobalVariableProvider,private api :ApiProvider,private formbuilder : FormBuilder) {
+   constructor(public nav: NavController,private URL:GlobalVariableProvider,private api :ApiProvider,private formbuilder : FormBuilder) {
 
   this.datauser = this.formbuilder.group({
     nom: ['', Validators.required],
@@ -28,10 +28,24 @@ phoneinvalid : boolean = false;
     details:['',Validators.required]
 
   });
+  this.Info();
+  this.getVersionInfo();
 
   }
+  getVersionInfo(){
+     console.log("Bonjour Dame")
+  }
+  async Info(){
+     try {
+       const versionInfo = await Pro.deploy.getCurrentVersion();
+       console.log("Information version"+JSON.stringify(versionInfo));
+     }
+     catch (err){
+       console.log("erreur "+JSON.stringify(err));
 
+     }
 
+  }
 
   veriftel()
   {
