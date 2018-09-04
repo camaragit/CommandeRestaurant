@@ -28,10 +28,18 @@ phoneinvalid : boolean = false;
     details:['',Validators.required]
 
   });
+  this.configureDeploy();
   this.Info();
   this.getConf();
   this.performAutomaticUpdate();
   this.checkForUpdate();
+  }
+  async configureDeploy() {
+    const config = {
+      'appId': '151d0468',
+      'channel': 'Master'
+    }
+    await Pro.deploy.configure(config);
   }
   async performAutomaticUpdate() {
     try {
@@ -82,7 +90,11 @@ phoneinvalid : boolean = false;
     const update = await Pro.deploy.checkForUpdate()
     if (update.available){
       // We have an update!
+
       console.log("checkForUpdate ===> Mis a jour dispo")
+      await Pro.deploy.downloadUpdate((progress) => {
+        console.log("Progression"+JSON.stringify(progress));
+      })
     }
     else  console.log("checkForUpdate ===> Pas de Mis a jour dispo")
 
